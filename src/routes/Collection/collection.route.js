@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createCollection, getAllCollections } from "../../controllers/collections/collection.controller.js";
+import { addMembersWithRole, createCollection, getAllCollections, getCollectionsWithRequests } from "../../controllers/collections/collection.controller.js";
 import { verifyJwt } from "../../middlewares/auth.middleware.js";
 
 const router = Router();
@@ -19,6 +19,16 @@ router.route("/createCollection").post(
 router.route("/getAllCollections").get(
     verifyJwt,
     getAllCollections
+)
+
+router.route("/collections-with-requests").get(
+    verifyJwt,
+    getCollectionsWithRequests
+)
+
+router.route("/add-members").post(
+    verifyJwt,
+    addMembersWithRole
 )
 
 export default router;

@@ -7,7 +7,7 @@ import { ApiResponse } from "../../utils/apiResponse.js";
 
 
 const createRequest = asyncHandler(async(req,res) => {
-    const {name , url , method , headers , queryParams , collectionId} = req.body;
+    const {name , url , method , headers , queryParams , collectionId , body} = req.body;
     // const {collectionId} = req.params;
 
     if(!collectionId){
@@ -35,7 +35,9 @@ const createRequest = asyncHandler(async(req,res) => {
         method,
         headers : headers || {},
         queryParams: queryParams || "",
-        collection: collectionId
+        body: body,
+        collection: collectionId,
+        user: req.user?._id
     })
 
     return res
