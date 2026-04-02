@@ -13,6 +13,15 @@ const CollectionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    members: [
+  {
+    user: mongoose.Schema.Types.ObjectId,
+    role: {
+      type: String,
+      enum: ["admin", "editor", "viewer"],
+    },
+  }
+]
 } , {timestamps: true});
 
 export const Collection = mongoose.model("Collection" , CollectionSchema);

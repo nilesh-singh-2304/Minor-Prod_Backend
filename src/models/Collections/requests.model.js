@@ -25,9 +25,17 @@ const RequestSchema = new mongoose.Schema({
         of: String,
         default: {},
     },
+    body: {
+        type: mongoose.Schema.Types.Mixed,
+        default: null,
+    },
     collection: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Collection"
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 } , {timestamps: true});
 
