@@ -9,6 +9,8 @@ import { ApiResponse } from "../../utils/apiResponse.js";
 const createRequest = asyncHandler(async(req,res) => {
     const {name , url , method , headers , queryParams , collectionId , body} = req.body;
     // const {collectionId} = req.params;
+    console.log("credentials are : " , name , url , method , headers , queryParams , collectionId , body);
+    
 
     if(!collectionId){
         throw new ApiError(400 , "Collection ID is required");
