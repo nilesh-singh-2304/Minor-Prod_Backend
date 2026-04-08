@@ -13,7 +13,7 @@ app.use(cors({
      credentials: true,    
 }));
 
-app.use(urlencoded({extended:true}));
+app.use(urlencoded({extended:true})); 
 
 app.use(express.json({limit:"20kb"}));
 
@@ -27,5 +27,11 @@ app.use("/api/v1",testRoute);
 app.use("/api/v1/user",userRoute);
 app.use("/api/v1/collection",collectionRoute);
 app.use("/api/v1/request",requestRoute);
+
+app.use((err, req,res, next)=>{
+    return res.status(err.statusCode || 500).json({
+        message:  err.message ||  "Internal Server Error"
+    })
+})
 
 export default app;

@@ -7,6 +7,8 @@ import { asyncHandler } from "../../utils/asyncHandler.js";
 const createCollection = asyncHandler(async (req, res) => {
   const { name, baseUrl } = req.body;
   const userId = req.user._id;
+  console.log("credentials are : " , name , baseUrl);
+  
 
   if ([name, baseUrl].some((field) => field.trim() === "")) {
     throw new ApiError(400, "Name and baseUrl are required");
